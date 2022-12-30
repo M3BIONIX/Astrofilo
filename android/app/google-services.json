@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1030452710792",
+    "project_id": "astrofilo-3816d",
+    "storage_bucket": "astrofilo-3816d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030452710792:android:46eec3934937cd6a11fe3d",
+        "android_client_info": {
+          "package_name": "com.astrofilo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030452710792-5rvtrru2v3se9dgjmut0r39r7ijrrm75.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.astrofilo",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "1030452710792-lprg1h0fa2ssdqfrdo2errrdmr915kf8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUsd34NCe-w0Z4hdly49M_SdORsrF1hLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030452710792-lprg1h0fa2ssdqfrdo2errrdmr915kf8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
