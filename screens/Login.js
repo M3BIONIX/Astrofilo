@@ -58,6 +58,13 @@ export default class Login extends Component {
       delay : 5000,
       useNativeDriver : true,
     }).start();
+
+    Animated.timing(this.opacityAuth, {
+      toValue : 1,
+      duration : 1000,
+      delay : 6000,
+      useNativeDriver : true,
+    }).start();
   }
 
     constructor(){
@@ -69,6 +76,7 @@ export default class Login extends Component {
       this.opacityRight = new Animated.Value(0);
       this.opacityLeft = new Animated.Value(0);
       this.opacityLine = new Animated.Value(0);
+      this.opacityAuth = new Animated.Value(0);
     }
 
   
@@ -109,7 +117,7 @@ export default class Login extends Component {
       alignItems : 'center',
       position: 'absolute',
       paddingBottom : 270,
-      opacity : this.opacityLine
+      opacity : this.opacityAuth
     }
     
     const path1 = [ "M5 153.007V0.993408" ]
