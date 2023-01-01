@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-
+import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 
 
 
@@ -9,16 +9,26 @@ export default class LoginAuth extends Component {
    
     componentDidMount(){
         GoogleSignin.configure({
-            webClientId : '1030452710792-5rvtrru2v3se9dgjmut0r39r7ijrrm75.apps.googleusercontent.com'
+            webClientId : "1030452710792-lprg1h0fa2ssdqfrdo2errrdmr915kf8.apps.googleusercontent.com"
         });
 
 
         }
     render() {
+        
+        const signIn = async () => {
+            
+            const { idToken } = await GoogleSignin.signIn();
+            const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+            const resp = auth().signInWithCredential(googleCredential);
+            console.log(resp)
+          }
+        
+        
         return (
             <View style={styles.layer} >
                 <View style = {styles.log}>
-                    <TouchableOpacity style={styles.Cbutton}>
+                    <TouchableOpacity style={styles.Cbutton} activeOpacity={0.8} >
                        <Text style={{color : '#FFFFFF', fontFamily: 'font', fontSize : 15}}>Create Account</Text>
                     </TouchableOpacity>
                     <View style={{flexDirection: 'row', alignItems: 'center',marginTop : 55, position : 'absolute'}}>
@@ -28,7 +38,7 @@ export default class LoginAuth extends Component {
                          </View>
                         <View style={{flex: 1, height: 0.7, width : 100, backgroundColor: '#808080'}} />
                     </View>
-                    <TouchableOpacity style={styles.Gbutton}>
+                    <TouchableOpacity style={styles.Gbutton} activeOpacity={0.7} onPress={signIn}>
                        <Image source={require('../assets/Glogo.png')} style={{height : 20, width : 20, marginHorizontal : 10}}/>
                        <Text style={{color : '#000000', fontFamily: 'font', fontSize : 16}}>Continue with Google</Text>
                     </TouchableOpacity>
