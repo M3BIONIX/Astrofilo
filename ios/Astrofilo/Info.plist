@@ -55,6 +55,12 @@
 	<array>
 		<string>font.ttf</string>
 		<string>fontl.ttf</string>
+		<string>generalsans.otf</string>
+		<string>generalsans-medium.otf</string>
+		<string>generalsans-semibold.otf</string>
+		<string>font-light.ttf</string>
+		<string>font-medium.ttf</string>
+		<string>Outfit-Bold.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -2,6 +2,11 @@ import React,{Component} from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
+import { createStackNavigator } from 'react-navigation-stack';
+import CreateAcc from './CreateAcc';
+
+const Stack = createStackNavigator();
+
 
 
 
@@ -14,9 +19,13 @@ export default class LoginAuth extends Component {
 
 
         }
-    render() {
+ 
+        render() {
         
-        const signIn = async () => {
+        
+        
+
+           const signIn = async () => {
             
             const { idToken } = await GoogleSignin.signIn();
             const googleCredential = auth.GoogleAuthProvider.credential(idToken);
@@ -28,7 +37,7 @@ export default class LoginAuth extends Component {
         return (
             <View style={styles.layer} >
                 <View style = {styles.log}>
-                    <TouchableOpacity style={styles.Cbutton} activeOpacity={0.8} >
+                    <TouchableOpacity style={styles.Cbutton} activeOpacity={0.8} onPress={() => {}} >
                        <Text style={{color : '#FFFFFF', fontFamily: 'font', fontSize : 15}}>Create Account</Text>
                     </TouchableOpacity>
                     <View style={{flexDirection: 'row', alignItems: 'center',marginTop : 55, position : 'absolute'}}>
@@ -57,6 +66,9 @@ export default class LoginAuth extends Component {
     }
 
 }
+
+
+
 
 const styles = StyleSheet.create({
    

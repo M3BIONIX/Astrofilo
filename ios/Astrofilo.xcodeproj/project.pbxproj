@@ -18,6 +18,14 @@
 		9F0BBBAE76294BA1BC3134E9 /* font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 848345CBB4F2444F9713C55D /* font.ttf */; };
 		B3A6E27A585B406A97D4F507 /* Glogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 40B918FA010B4E8E8FBF2F90 /* Glogo.png */; };
 		8A780C62D7C24C71ACF8D4C9 /* fontl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F49C6232809F483EA2BE2833 /* fontl.ttf */; };
+		A01DDAA2A2F745228CB7213F /* logoNav.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F1727894D98431D8803D459 /* logoNav.png */; };
+		531FFEE2C15E414F98445149 /* generalsans.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6050BCA62D534957A21A4FA0 /* generalsans.otf */; };
+		B956F89689394280AF2C0CF1 /* generalsans-medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AAB6133A45B942F5AAB9BC30 /* generalsans-medium.otf */; };
+		8F12DD35051C407B9F44C2BD /* generalsans-semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F72533577D134AE6ACDBA6D7 /* generalsans-semibold.otf */; };
+		412FC89712D349E2BD51C922 /* Error.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 821C0F89F2614AE2A299E038 /* Error.jpg */; };
+		5CFFA0AFF0714B0FBCF67E8F /* font-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68DB62805C8C45BA8140BBB3 /* font-light.ttf */; };
+		476DA802CE8D427897E7BBE2 /* font-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A65F393A37E340BF997B04A1 /* font-medium.ttf */; };
+		70DA14FE8FB44FBA982E7F95 /* Outfit-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00AC3858251B4B069027DDA8 /* Outfit-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +60,14 @@
 		848345CBB4F2444F9713C55D /* font.ttf */ = {isa = PBXFileReference; name = "font.ttf"; path = "../assets/font.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		40B918FA010B4E8E8FBF2F90 /* Glogo.png */ = {isa = PBXFileReference; name = "Glogo.png"; path = "../assets/Glogo.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		F49C6232809F483EA2BE2833 /* fontl.ttf */ = {isa = PBXFileReference; name = "fontl.ttf"; path = "../assets/fontl.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9F1727894D98431D8803D459 /* logoNav.png */ = {isa = PBXFileReference; name = "logoNav.png"; path = "../assets/logoNav.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6050BCA62D534957A21A4FA0 /* generalsans.otf */ = {isa = PBXFileReference; name = "generalsans.otf"; path = "../assets/generalsans.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AAB6133A45B942F5AAB9BC30 /* generalsans-medium.otf */ = {isa = PBXFileReference; name = "generalsans-medium.otf"; path = "../assets/generalsans-medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F72533577D134AE6ACDBA6D7 /* generalsans-semibold.otf */ = {isa = PBXFileReference; name = "generalsans-semibold.otf"; path = "../assets/generalsans-semibold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		821C0F89F2614AE2A299E038 /* Error.jpg */ = {isa = PBXFileReference; name = "Error.jpg"; path = "../assets/Error.jpg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		68DB62805C8C45BA8140BBB3 /* font-light.ttf */ = {isa = PBXFileReference; name = "font-light.ttf"; path = "../assets/font-light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A65F393A37E340BF997B04A1 /* font-medium.ttf */ = {isa = PBXFileReference; name = "font-medium.ttf"; path = "../assets/font-medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		00AC3858251B4B069027DDA8 /* Outfit-Bold.ttf */ = {isa = PBXFileReference; name = "Outfit-Bold.ttf"; path = "../assets/Outfit-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +180,14 @@
 				848345CBB4F2444F9713C55D /* font.ttf */,
 				40B918FA010B4E8E8FBF2F90 /* Glogo.png */,
 				F49C6232809F483EA2BE2833 /* fontl.ttf */,
+				9F1727894D98431D8803D459 /* logoNav.png */,
+				6050BCA62D534957A21A4FA0 /* generalsans.otf */,
+				AAB6133A45B942F5AAB9BC30 /* generalsans-medium.otf */,
+				F72533577D134AE6ACDBA6D7 /* generalsans-semibold.otf */,
+				821C0F89F2614AE2A299E038 /* Error.jpg */,
+				68DB62805C8C45BA8140BBB3 /* font-light.ttf */,
+				A65F393A37E340BF997B04A1 /* font-medium.ttf */,
+				00AC3858251B4B069027DDA8 /* Outfit-Bold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -269,6 +293,14 @@
 				9F0BBBAE76294BA1BC3134E9 /* font.ttf in Resources */,
 				B3A6E27A585B406A97D4F507 /* Glogo.png in Resources */,
 				8A780C62D7C24C71ACF8D4C9 /* fontl.ttf in Resources */,
+				A01DDAA2A2F745228CB7213F /* logoNav.png in Resources */,
+				531FFEE2C15E414F98445149 /* generalsans.otf in Resources */,
+				B956F89689394280AF2C0CF1 /* generalsans-medium.otf in Resources */,
+				8F12DD35051C407B9F44C2BD /* generalsans-semibold.otf in Resources */,
+				412FC89712D349E2BD51C922 /* Error.jpg in Resources */,
+				5CFFA0AFF0714B0FBCF67E8F /* font-light.ttf in Resources */,
+				476DA802CE8D427897E7BBE2 /* font-medium.ttf in Resources */,
+				70DA14FE8FB44FBA982E7F95 /* Outfit-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
