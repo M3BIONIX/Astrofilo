@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
-import { View, StyleSheet,Image,Animated, Dimensions} from "react-native";
-import { ScrollView } from 'react-native-gesture-handler';
+import { View, StyleSheet,Image,Animated, Dimensions,ScrollView} from "react-native";
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Lottie from "lottie-react-native";
 import { Card,Button,Text,Paragraph } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CountDown from 'react-native-countdown-component';
+import { forHorizontalIOS } from 'react-navigation-stack/lib/typescript/src/vendor/TransitionConfigs/CardStyleInterpolators';
 
 const Stack = createNativeStackNavigator()
 
@@ -42,21 +42,28 @@ getLaunches = async () => {
  
   try {
         
-        const res = await fetch('https://ll.thespacedevs.com/2.2.0/launch/upcoming/')
+   
+        const abort = new AbortController(); 
+        const res = await fetch('https://ll.thespacedevs.com/2.2.0/launch/upcoming/',{signal : abort.signal})
         .then((response) => response.json()) 
         .then(async(launch) => {this.setState({launches : launch.results})})
         .then(() => {this.setState({loading : false})});
         
-               
+     
       } catch (error) {
         console.log("Details API Down");
         console.log(error);
+        if(await AsyncStorage.getItem('@launches') != null)
+        this.setState({launches : JSON.parse(await AsyncStorage.getItem('@launches'))});
         this.props.navigation.navigate('ApiDown');
         
       }
 };
 
-
+async componentWillUnmount (){
+  this.setState({launches : []});
+  await AsyncStorage.setItem('@launches',JSON.stringify(this.state.launches))
+}
 
 
 
@@ -160,21 +167,28 @@ this.launchDetails = this.props.route.params.launches
 this.launchId = Number(this.props.route.params.id)
 this.currentDate = new Date();
 this.launchDate = new Date(this.launchDetails[this.launchId].window_start);
-this.secLeft = Math.abs(this.launchDate - this.currentDate)/1000;
+this.secLeft = (this.launchDate - this.currentDate)/1000;
+if(this.secLeft < 0)
+ this.secLeft = 0;
+
 }
 
 getRocketDetails = async() => {
     
   try{
-    
-    const res = await fetch(this.launchDetails[this.launchId].rocket.configuration.url)
+    const abort = new AbortController();
+    const res = await fetch(this.launchDetails[this.launchId].rocket.configuration.url, {signal : abort.signal})
     .then((response) => response.json()) 
     .then((rocket) => { this.setState({rocketDetails : rocket}); })   
+    
+   
     
   }
   catch(error)
   {
     console.log("Rocket Api down");
+    if(await AsyncStorage.getItem('@rocketDetails') != null)
+     this.setState({rocketDetails : JSON.parse(await AsyncStorage.getItem('@rocketDetails'))});
     this.props.navigation.navigate('ApiDown');
   }
 
@@ -185,32 +199,27 @@ componentDidMount(){
  
 }
 
+  async componentWillUnmount(){
+  this.setState({rocketDetails : []});
+  await AsyncStorage.setItem('@rocketDetails',JSON.stringify(this.state.rocketDetails))
+}
+
 
   render(){
 
-    
-    return(
-            <View>
-               <View style={{ backgroundColor : '#EAF3F3',width : Dimensions.get("screen").width, height : Dimensions.get("screen").height}} >
-                 <View style={{flexWrap : 'wrap', flex : 1}}>
-                 <Image source={{ uri : this.launchDetails[this.launchId].image }} style={{flexWrap : 'wrap',height:'100%', width:'100%',overflow : 'hidden',resizeMode:'cover',}} />
-                </View>
-                <View>
-                <Text style={{fontFamily : 'Outfit-Bold', fontSize : 23, marginTop : 20, marginLeft : 20,color : '#000000'}}>{this.launchDetails[this.launchId].name}</Text>
-                
-                <Card style={{marginTop : 30, backgroundColor : '#FEF1E6'}} mode={'elevated'}>
-                  <Card.Title title="CountDown" titleStyle={{fontFamily : 'font', fontSize : 15}} titleNumberOfLines={1}/>
-                  <Card.Content>
-                  <CountDown until={this.secLeft} size={20} digitStyle={{backgroundColor : '#FFA9A9'}} digitTxtStyle={{color :'#000000'}}/>
-                  </Card.Content>
-                </Card>
-                
-                <Card style={{marginTop : 30, backgroundColor : '#DAF1F1'}} mode={'elevated'} >
-                <Card.Content>
+    const countDown = this.state;
+
+    const rocketFeatures = () => {
+      return(
+            <View style={{backgroundColor : '#DAF1F1',borderRadius : 30, elevation : 10}}  >
+                <ScrollView style={{flexGrow : 1,marginBottom : 70,marginTop : 10}} >
+                <View style={{marginTop :20,marginLeft : 10}}>
                 <View>
                 <View style={{flexDirection : 'row'}}>
                 <Text style={{fontFamily : 'font', fontSize : 14, marginLeft : 8, marginTop : 3}}>Status :</Text>
-                <Paragraph numberOfLines={3} style={{fontFamily : 'font-medium', fontSize : 14,width :'72%', marginLeft : 5}}>{this.launchDetails[this.launchId].status.description}</Paragraph>
+               
+                <Paragraph numberOfLines={3} style={{fontFamily : 'font-medium', fontSize : 14,width :'72%', marginLeft : 5,justifyContent : 'center'}}>{this.launchDetails[this.launchId].status.description}</Paragraph>
+             
                 </View>
                 <View style={{flexDirection : 'row',marginTop : 10}}>
                 <Text style={{fontFamily : 'font', fontSize : 14, marginLeft : 8, marginTop : 10}}>Rocket Name:</Text>
@@ -221,18 +230,39 @@ componentDidMount(){
                 <Paragraph numberOfLines={100} style={{fontFamily : 'font-medium', fontSize : 14,width :'70%', marginLeft : 5,marginTop : 10,textAlign :'justify'}}>{this.state.rocketDetails.description}</Paragraph>
                 </View>
                 </View>
-                </Card.Content>
+                </View>
+                </ScrollView>
+              </View>
+       )
+    }
+    
+    return(
+            <View>
+               <View style={{ backgroundColor : '#EAF3F3',width : Dimensions.get("screen").width, height : Dimensions.get("screen").height}} >
+              
+                 <ScrollView style={{flex : 3 }} horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={true}>
+                 <Image source={{ uri : this.launchDetails[this.launchId].image}} style={{height:'100%', width:'100%',overflow : 'hidden',resizeMode:'cover',}} />
+                 <Image source={{ uri : this.launchDetails[this.launchId].image}} style={{height:'100%', width:'100%',overflow : 'hidden',resizeMode:'cover',}} />
+                 
+                 </ScrollView>
+                <View style={{flex : 3}}>
+                <Text style={{fontFamily : 'Outfit-Bold',marginTop : 15, fontSize : 23, justifyContent : 'center', marginLeft : 20,color : '#000000',width : '70%',height : '25%'}}>{this.launchDetails[this.launchId].name}</Text>
+                
+                <Card style={{marginTop : 10, backgroundColor : '#FEF1E6'}} mode={'elevated'}>
+                  <Card.Title title="CountDown" titleStyle={{fontFamily : 'font', fontSize : 15,}} titleNumberOfLines={1}/>
+                  <Card.Content>
+                  <CountDown until={this.secLeft} size={20}  digitStyle={{backgroundColor : '#FFA9A9'}} digitTxtStyle={{color :'#000000'}} running={this.state.countDown} onFinish={()=>{this.setState({countDown : false})}}/>
+                  </Card.Content>
                 </Card>
-             
+                </View>
+                <View style={{flex : 4}}>
+                  {rocketFeatures()}
+               </View>
                 </View>
                 </View>
-         
-               
-            </View>
         )
     }
 }
-
 
 export default class HomeApp extends React.Component{
   render(){
