@@ -21,6 +21,10 @@ target 'Astrofilo' do
 
   pod 'RNGoogleSignin', :path => '../node_modules/@react-native-google-signin/google-signin'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  pod 'RCT3DModel', :path => '../node_modules/react-native-3d-model-view'
+
   target 'AstrofiloTests' do
     inherit! :complete
     # Pods for testing
